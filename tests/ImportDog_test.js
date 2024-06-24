@@ -7,5 +7,5 @@ Before(({ I }) => {
 Scenario('Dogs Import', ({ I, travelPage }) => {
   travelPage.importRequirements();
   travelPage.grabRequirementsText();
-  pause();
+  //pause();
 }).tag('dog');

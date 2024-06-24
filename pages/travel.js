@@ -35,6 +35,8 @@ module.exports = {
 
   async grabRequirementsText() {
     const requirementsText = await I.grabTextFrom(this.textLocation);
-    console.log(requirementsText);
+    const cleanedText = requirementsText.replace(/\s+/g, ' ').trim();
+    const trimmedText = cleanedText.split('Additional information')[0];
+    console.log("For adult dogs with non-commercial import, " + trimmedText);
   },
 };
