@@ -1,6 +1,11 @@
 Feature('Import of Animals');
 
-Scenario('Dogs Import', ({ I }) => {
-  I.amOnPage('https://inspection.canada.ca/en');
-  //basePage.clickMyAccount();
+Before(({ I }) => {
+  I.openRequirementsPage();
+});
+
+Scenario('Dogs Import', ({ I, travelPage }) => {
+  travelPage.importRequirements();
+  travelPage.grabRequirementsText();
+  pause();
 }).tag('dog');
