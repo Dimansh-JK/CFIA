@@ -8,6 +8,4 @@ Scenario('Dogs Import', async ({I, travelPage}) => {
   travelPage.importRequirementsAdultPersonalDog();
   await travelPage.verifyTextIsAvailable();
   travelPage.grabRequirementsText();
-
-  //pause();
 }).tag('dog');

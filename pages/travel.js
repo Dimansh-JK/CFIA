@@ -1,4 +1,5 @@
 const { I } = inject();
+const fs = require('fs');
 
 module.exports = {
   pageBody: { xpath: '/html/body/div' },
@@ -45,6 +46,14 @@ module.exports = {
     I.wait(2);
     const requirementsText = await I.grabTextFrom(this.textLocation);
     const finalText = await I.grabTextfromPage(requirementsText);
-    console.log('For adult dogs with non-commercial import, when you arrive in Canada you will need the following: \n' + finalText);
+    fs.writeFile(
+      'importRequirementsAdultPersonalDog.txt',
+      'For adult dogs with non-commercial import, when you arrive in Canada you will need the following: \n' +
+        finalText,
+      (err) => {
+        if (err) throw err;
+        console.log('Text has been saved to importRequirementsAdultPersonalDog.txt');
+      }
+    );
   },
 };
