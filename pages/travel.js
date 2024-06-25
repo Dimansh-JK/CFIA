@@ -42,10 +42,9 @@ module.exports = {
   },
 
   async grabRequirementsText() {
-    I.waitForText('Questions');
-    const requirementsText = await I.grabTextFromAll(this.textLocation);
-    console.log(requirementsText);
+    I.wait(2);
+    const requirementsText = await I.grabTextFrom(this.textLocation);
     const finalText = await I.grabTextfromPage(requirementsText);
-    console.log('For adult dogs with non-commercial import, ' + finalText);
+    console.log('For adult dogs with non-commercial import, when you arrive in Canada you will need the following: \n' + finalText);
   },
 };
