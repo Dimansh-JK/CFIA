@@ -4,8 +4,10 @@ Before(({ I }) => {
   I.openRequirementsPage();
 });
 
-Scenario('Dogs Import', ({ I, travelPage }) => {
-  travelPage.importRequirements();
+Scenario('Dogs Import', async ({I, travelPage}) => {
+  travelPage.importRequirementsAdultPersonalDog();
+  await travelPage.verifyTextIsAvailable();
   travelPage.grabRequirementsText();
+
   //pause();
 }).tag('dog');

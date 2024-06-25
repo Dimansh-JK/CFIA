@@ -25,10 +25,13 @@ exports.config = {
     Mochawesome: {
       uniqueScreenshotNames: 'true',
     },
+    Generic: {
+      require: './helpers/generic_helper.js',
+    },
   },
   include: {
     I: './steps_file.js',
-    travelPage: "./pages/travel.js",
+    travelPage: './pages/travel.js',
   },
   mocha: {
     reporterOptions: {

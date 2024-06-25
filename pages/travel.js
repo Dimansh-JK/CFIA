@@ -7,9 +7,9 @@ module.exports = {
   ageEnter: { xpath: '//*[@id="wb-auto-45"]' },
   countryEnter: { xpath: '//*[@id="wb-auto-60"]' },
   continueButton: { xpath: '//input[@type="submit"]' },
-  textLocation: {xpath: '//div[@class="well"]'},
+  textLocation: { xpath: '//div[@class="well"]' },
 
-  importRequirements() {
+  importRequirementsAdultPersonalDog() {
     I.click(this.typeOfAnimal);
     I.selectOption(this.typeOfAnimal, '+ Dog ');
     I.click(this.pageBody);
@@ -28,15 +28,24 @@ module.exports = {
     I.click(this.countryEnter);
     I.selectOption(this.countryEnter, 'Other');
     I.click(this.pageBody);
-    
+
     I.wait(3);
     I.click(this.continueButton);
   },
 
+  async verifyTextIsAvailable() {
+    I.waitForVisible(this.textLocation);
+    const textExists = await I.checkElementExists(this.textLocation);
+    if (!textExists) {
+      throw new Error('Text is not available on the page');
+    }
+  },
+
   async grabRequirementsText() {
-    const requirementsText = await I.grabTextFrom(this.textLocation);
-    const cleanedText = requirementsText.replace(/\s+/g, ' ').trim();
-    const trimmedText = cleanedText.split('Additional information')[0];
-    console.log("For adult dogs with non-commercial import, " + trimmedText);
+    I.waitForText('Questions');
+    const requirementsText = await I.grabTextFromAll(this.textLocation);
+    console.log(requirementsText);
+    const finalText = await I.grabTextfromPage(requirementsText);
+    console.log('For adult dogs with non-commercial import, ' + finalText);
   },
 };
