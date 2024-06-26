@@ -1,4 +1,6 @@
 const Helper = require('@codeceptjs/helper');
+const fs = require('fs');
+const locators = require('../locators');
 
 class Generic extends Helper {
   async grabTextfromPage(string) {
@@ -12,6 +14,15 @@ class Generic extends Helper {
 
   async checkElementExists(locator) {
     return Boolean(await this.helpers['Playwright'].grabNumberOfVisibleElements(locator));
+  }
+
+  async grabRequirementsText(title, fileName) {
+    const { Playwright } = this.helpers;
+    await Playwright.wait(2);
+    const requirementsText = await Playwright.grabTextFrom(locators.textLocation);
+    const finalText = await this.grabTextfromPage(requirementsText);
+    fs.writeFileSync(fileName + '.txt', title + ': \n' + finalText + ' \n');
+    console.log('Text is exported to: ' + fileName + '.txt');
   }
 
 }
