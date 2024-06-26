@@ -16,6 +16,15 @@ class Generic extends Helper {
     return Boolean(await this.helpers['Playwright'].grabNumberOfVisibleElements(locator));
   }
 
+  async verifyTextIsAvailable() {
+    const { Playwright } = this.helpers;
+    Playwright.waitForVisible(locators.textLocation);
+    const textExists = await this.checkElementExists(locators.textLocation);
+    if (!textExists) {
+      throw new Error('Text is not available on the page');
+    }
+  }
+
   async grabRequirementsText(title, fileName) {
     const { Playwright } = this.helpers;
     await Playwright.wait(2);
@@ -24,7 +33,6 @@ class Generic extends Helper {
     fs.writeFileSync(fileName + '.txt', title + ': \n' + finalText + ' \n');
     console.log('Text is exported to: ' + fileName + '.txt');
   }
-
 }
 
 module.exports = Generic;

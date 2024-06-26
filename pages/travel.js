@@ -29,12 +29,4 @@ module.exports = {
     I.click(locators.continueButton);
   },
 
-  async verifyTextIsAvailable() {
-    I.waitForVisible(locators.textLocation);
-    const textExists = await I.checkElementExists(locators.textLocation);
-    if (!textExists) {
-      throw new Error('Text is not available on the page');
-    }
-  },
-
 };
