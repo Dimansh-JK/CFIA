@@ -42,18 +42,13 @@ module.exports = {
     }
   },
 
-  async grabRequirementsText() {
+  async grabRequirementsText(title, fileName) {
     I.wait(2);
     const requirementsText = await I.grabTextFrom(this.textLocation);
     const finalText = await I.grabTextfromPage(requirementsText);
-    fs.writeFile(
-      'importRequirementsAdultPersonalDog.txt',
-      'For adult dogs with non-commercial import, when you arrive in Canada you will need the following: \n' +
-        finalText,
-      (err) => {
-        if (err) throw err;
-        console.log('Text has been saved to importRequirementsAdultPersonalDog.txt');
-      }
-    );
+    fs.writeFileSync(fileName + '.txt', title + ': \n' + finalText + ' \n', (err) => {
+      if (err) throw err;
+    });
+    console.log('Text is exported to: '+fileName + '.txt');
   },
 };
