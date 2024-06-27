@@ -1,23 +1,22 @@
-englishLanguageButton = { xpath: '//a[text()="English"]' };
-travellingRules = { xpath: '//a[text()="Travelling with pets, food or plants"]' };
-travellingPets = { xpath: '//a[text()="Travelling with pets"]' };
-requirementsAnimals = { xpath: '//a[text()="Requirements for bringing an animal into Canada"]' };
 const fs = require('fs');
+const locators = require('./locators');
 
-module.exports = function() {
+module.exports = function () {
   return actor({
-    openRequirementsPage(){
+    openRequirementsPage() {
       this.amOnPage('https://inspection.canada.ca');
-      this.click(englishLanguageButton);
-      this.click(travellingRules);
-      this.click(travellingPets);
-      this.click(requirementsAnimals);
+      this.click(locators.englishLanguageButton);
+      this.click(locators.travellingRules);
+      this.click(locators.travellingPets);
+      this.click(locators.requirementsAnimals);
     },
     deleteTxtFile(fileName) {
-      const fileToDelete = './' + fileName + '.txt';
-      fs.unlinkSync(fileToDelete);
+      if (fs.existsSync('./' + fileName + '.txt')) {
+        const fileToDelete = './' + fileName + '.txt';
+        fs.unlinkSync(fileToDelete);
+      } else {
+        fs.openSync('./' + fileName + '.txt', 'w');
+      }
     },
-
-
   });
-}
+};

@@ -7,4 +7,8 @@ module.exports = {
   continueButton: { xpath: '//input[@type="submit"]' },
   textLocation: { xpath: '//div[@class="well"]' },
   dropDownList5: { xpath: '(//select)[6]' },
+  englishLanguageButton: { xpath: '//a[text()="English"]' },
+  travellingRules: { xpath: '//a[text()="Travelling with pets, food or plants"]' },
+  travellingPets: { xpath: '//a[text()="Travelling with pets"]' },
+  requirementsAnimals: { xpath: '//a[text()="Requirements for bringing an animal into Canada"]' },
 };
