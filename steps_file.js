@@ -18,5 +18,12 @@ module.exports = function () {
         fs.openSync('./' + fileName + '.txt', 'w');
       }
     },
+
+    async openFile(fileName) {
+      const { default: open } = await import('open');
+      await open('./' + fileName + '.txt');
+    },
+
+
   });
 };

@@ -27,3 +27,7 @@ Scenario('Dogs Import', async ({ I, travelPage }) => {
     'importRequirementsDog'
   );
 }).tag('dog');
+
+AfterSuite(async ({ I }) => {
+  await I.openFile('importRequirementsDog');
+});
