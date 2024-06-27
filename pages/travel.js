@@ -43,4 +43,17 @@ module.exports = {
     I.wait(3);
     I.click(locators.continueButton);
   },
+
+  importRequirementsPuppyPersonalDog() {
+    I.click(locators.dropDownList3);
+    I.selectOption(locators.dropDownList3, '+ Less than 3 months ');
+    I.click(locators.pageBody);
+
+    I.click(locators.dropDownList4);
+    I.selectOption(locators.dropDownList4, 'Yes ');
+    I.click(locators.pageBody);
+
+    I.wait(3);
+    I.click(locators.continueButton);
+  },
 };
