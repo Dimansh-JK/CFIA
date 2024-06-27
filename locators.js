@@ -1,10 +1,10 @@
 module.exports = {
   pageBody: { xpath: '/html/body/div' },
-  typeOfAnimal: { xpath: '//*[@id="wb-auto-31"]' },
-  purposeEnter: { xpath: '//*[@id="wb-auto-38"]' },
-  ageEnter: { xpath: '//*[@id="wb-auto-45"]' },
-  countryEnter: { xpath: '//*[@id="wb-auto-119"]' }, //60
+  dropDownList1: { xpath: '(//select)[2]' }, // //*[@id="wb-auto-31"]
+  dropDownList2: { xpath: '(//select)[3]' }, // //*[@id="wb-auto-38"]
+  dropDownList3: { xpath: '(//select)[4]' }, // //*[@id="wb-auto-45"]
+  dropDownList4: { xpath: '(//select)[5]' }, // //*[@id="wb-auto-60"]
   continueButton: { xpath: '//input[@type="submit"]' },
   textLocation: { xpath: '//div[@class="well"]' },
-  ownerAccompany: { xpath: '//*[@id="wb-auto-101"]' },
+  dropDownList5: { xpath: '(//select)[6]' },
 };

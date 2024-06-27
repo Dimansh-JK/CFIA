@@ -30,7 +30,7 @@ class Generic extends Helper {
     await Playwright.wait(2);
     const requirementsText = await Playwright.grabTextFrom(locators.textLocation);
     const finalText = await this.grabTextfromPage(requirementsText);
-    fs.writeFileSync(fileName + '.txt', title + ': \n' + finalText + ' \n');
+    fs.appendFileSync(fileName + '.txt', title + ': \n' + finalText + ' \n \n');
     console.log('Text is exported to: ' + fileName + '.txt');
   }
 }
