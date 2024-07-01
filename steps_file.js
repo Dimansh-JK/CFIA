@@ -1,10 +1,34 @@
-// in this file you can append custom step methods to 'I' object
+const fs = require('fs');
+const locators = require('./locators');
 
-module.exports = function() {
+module.exports = function () {
   return actor({
+    getPath(fileName){
+    return `./${fileName}.txt`;
+  },
+    
+    openRequirementsPage() {
+      this.amOnPage('https://inspection.canada.ca');
+      this.click(locators.englishLanguageButton);
+      this.click(locators.travellingRules);
+      this.click(locators.travellingPets);
+      this.click(locators.requirementsAnimals);
+    },
+    deleteTxtFile(fileName) {
+      const filePath = this.getPath(fileName);
+      if (fs.existsSync(filePath)) {
+        const fileToDelete = filePath;
+        fs.unlinkSync(fileToDelete);
+      } else {
+        fs.openSync(filePath, 'w');
+      }
+    },
 
-    // Define custom steps here, use 'this' to access default methods of I.
-    // It is recommended to place a general 'login' function here.
+    async openFile(fileName) {
+      const { default: open } = await import('open');
+      await open(this.getPath(fileName));
+    },
+
 
   });
-}
+};
