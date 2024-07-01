@@ -3,6 +3,10 @@ const locators = require('./locators');
 
 module.exports = function () {
   return actor({
+    getPath(fileName){
+    return `./${fileName}.txt`;
+  },
+    
     openRequirementsPage() {
       this.amOnPage('https://inspection.canada.ca');
       this.click(locators.englishLanguageButton);
@@ -11,17 +15,18 @@ module.exports = function () {
       this.click(locators.requirementsAnimals);
     },
     deleteTxtFile(fileName) {
-      if (fs.existsSync('./' + fileName + '.txt')) {
-        const fileToDelete = './' + fileName + '.txt';
+      const filePath = this.getPath(fileName);
+      if (fs.existsSync(filePath)) {
+        const fileToDelete = filePath;
         fs.unlinkSync(fileToDelete);
       } else {
-        fs.openSync('./' + fileName + '.txt', 'w');
+        fs.openSync(filePath, 'w');
       }
     },
 
     async openFile(fileName) {
       const { default: open } = await import('open');
-      await open('./' + fileName + '.txt');
+      await open(this.getPath(fileName));
     },
 
 

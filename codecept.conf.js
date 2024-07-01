@@ -28,6 +28,9 @@ exports.config = {
     Generic: {
       require: './helpers/generic_helper.js',
     },
+    ChaiWrapper: {
+      require: 'codeceptjs-chai',
+    },
   },
   include: {
     I: './steps_file.js',
