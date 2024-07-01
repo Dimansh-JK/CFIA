@@ -3,7 +3,7 @@ const fs = require('fs');
 const locators = require('../locators'); // Импортируем локаторы
 
 module.exports = {
-  importRequirementsPersonalDog(type) {
+  RequirementsPersonalDog(type) {
     switch (type) {
       case 'Adult':
         I.click(locators.dropDownList1);

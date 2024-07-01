@@ -30,7 +30,7 @@ Before(async ({ I }) => {
 
 Data(dogAgeArray)
   .Scenario('Dogs Import', async ({ I, travelPage, current }) => {
-    travelPage.importRequirementsPersonalDog(current.dogAge);
+    travelPage.RequirementsPersonalDog(current.dogAge);
     assert.isTrue(await I.checkElementExists(locators.textLocation));
     await I.extractAndSaveRequirements(current.title, current.fileName);
   })
