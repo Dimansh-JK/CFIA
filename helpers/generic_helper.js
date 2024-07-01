@@ -21,7 +21,7 @@ class Generic extends Helper {
 
   async extractAndSaveRequirements(title, fileName) {
     const { Playwright } = this.helpers;
-    await Playwright.wait(2);
+    await Playwright.waitForElement(locators.requirementText);
     const requirementsText = await Playwright.grabTextFrom(locators.textLocation);
     const finalText = await this.cleanupTextStringfromPage(requirementsText);
     fs.appendFileSync(fileName + '.txt', title + ': \n' + finalText + ' \n \n');

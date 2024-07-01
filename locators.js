@@ -11,4 +11,5 @@ module.exports = {
   travellingRules: { xpath: '//a[text()="Travelling with pets, food or plants"]' },
   travellingPets: { xpath: '//a[text()="Travelling with pets"]' },
   requirementsAnimals: { xpath: '//a[text()="Requirements for bringing an animal into Canada"]' },
+  requirementText: { xpath: '//div[@id="repeat-dc-pet-dog-def"]' },
 };

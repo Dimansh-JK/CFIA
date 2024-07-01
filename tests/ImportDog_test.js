@@ -1,7 +1,7 @@
 Feature('Import of Animals');
 const { assert } = require('chai');
 const locators = require('../locators');
-const dogAgeArray = [
+const dogImportRequirements = [
   {
     dogAge: 'Adult',
     title: 'For adult dogs with non-commercial import, when you arrive in Canada you will need the following',
@@ -28,9 +28,9 @@ Before(async ({ I }) => {
   await I.openRequirementsPage();
 });
 
-Data(dogAgeArray)
+Data(dogImportRequirements)
   .Scenario('Dogs Import', async ({ I, travelPage, current }) => {
-    travelPage.RequirementsPersonalDog(current.dogAge);
+    travelPage.selectDogImportRequirements(current.dogAge);
     assert.isTrue(await I.checkElementExists(locators.textLocation));
     await I.extractAndSaveRequirements(current.title, current.fileName);
   })
